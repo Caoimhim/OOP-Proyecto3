@@ -104,34 +104,47 @@ bool cargaReservas(Reserva reservas[50], unsigned char &cant)
 void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50], unsigned char cantRes)
 {
 	char option;
-	cout << "(a) Consultar Materiales\n"
-	     << "(b) Consultar lista de Reservaviones\n"
-	     << "(c) Consultar reservaciones de un material\n"
-	     << "(d) Consutlar la reservacion de una fecha\n"
-	     << "(e) Hacer una reservación\n"
-	     << "(f) Terminar";
-	cin >> option;
-	tolower(option);
 
 	do 
 	{
+		cout << "(a) Consultar Materiales\n"
+		     << "(b) Consultar lista de Reservaciones\n"
+		     << "(c) Consultar reservaciones de un material\n"
+		     << "(d) Consutlar la reservacion de una fecha\n"
+		     << "(e) Hacer una reservación\n"
+		     << "(f) Terminar";
+		cin >> option;
+		tolower(option);
 		switch (option)
 		{
 		case 'a':
-			//TODO: Continue here
+			cout << "Materiales" << endl;
+			for (unsigned char i = 0; i < cantMat; ++i)
+			{
+				materiales[i]->muestra();
+			}
+			cout <<  endl;
 			break;
 		case 'b':
+			cout << "Reservas" << endl;
+			cout << "Material ID\tClienteID\tFecha" << endl;
+			for (unsigned char i = 0; i < cantRes; ++i)
+			{
+				cout << reservas[i].getIDMaterial() << '\t'
+				     << reservas[i].getIDCliente() << '\t'
+				     << reservas[i].getFechaReservacion() << endl;
+			}
 			break;
 		case 'c':
-			break;
-		case 'd':
-			break;
-		case 'e':
-			break;
-		default:
-			cout << "Porfavor, entre una opción válida\n";
-			break;
-		}
+		break;
+	case 'd':
+		break;
+	case 'e':
+		break;
+	default:
+		cout << "Porfavor, entre una opción válida\n";
+		break;
+	}
 	} while(option !='f');
 }
 int main()
