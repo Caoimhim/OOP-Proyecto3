@@ -9,6 +9,12 @@ using namespace std;
 #include "Disco.h"
 #include "Software.h"
 
+/* cargaMateriales
+   Lee información de materiales de Material.txt
+   Input: El arreglo de materiales y su tamaño
+   Output: Escribe al arreglo de materiales y modifica su tamaño
+   Regresa falso si no encuentra el archivo de los materiales
+*/
 bool cargaMateriales(Material *materiales[20], unsigned char &cant)
 {
 	ifstream inFile;
@@ -59,6 +65,12 @@ bool cargaMateriales(Material *materiales[20], unsigned char &cant)
 	return true;
 }
 
+/* cargaReservas
+   Lee de y guarda información de reservas de Reservas.txt
+   Input: arreglo de reservas y su tamaño
+   Output: Escribo al arreglo de reservas y su tamaño.
+   Regresa falso si no se encuentra el archivo
+*/
 bool cargaReservas(Reserva reservas[50], unsigned char &cant)
 {
 	ifstream inFile;
@@ -84,6 +96,44 @@ bool cargaReservas(Reserva reservas[50], unsigned char &cant)
 	return true;
 }
 
+/* menu
+   Ofrece las opciones al usuario en la consola, y realiza las acciones apropiadas
+   Input: El arreglo de materiales y reserva, con sus tamaños
+   Output: Puede modificar los arreglos
+*/
+void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50], unsigned char cantRes)
+{
+	char option;
+	cout << "(a) Consultar Materiales\n"
+	     << "(b) Consultar lista de Reservaviones\n"
+	     << "(c) Consultar reservaciones de un material\n"
+	     << "(d) Consutlar la reservacion de una fecha\n"
+	     << "(e) Hacer una reservación\n"
+	     << "(f) Terminar";
+	cin >> option;
+	tolower(option);
+
+	do 
+	{
+		switch (option)
+		{
+		case 'a':
+			//TODO: Continue here
+			break;
+		case 'b':
+			break;
+		case 'c':
+			break;
+		case 'd':
+			break;
+		case 'e':
+			break;
+		default:
+			cout << "Porfavor, entre una opción válida\n";
+			break;
+		}
+	} while(option !='f');
+}
 int main()
 {
 	Material *materiales[20];
@@ -104,7 +154,7 @@ int main()
 		return 0;
 	}
 
-	// menu();
+	menu(materiales, cantidadMateriales, reservas, cantidadReservas);
 	
 	return 0;
 }
