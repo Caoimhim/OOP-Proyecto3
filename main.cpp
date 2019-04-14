@@ -147,6 +147,7 @@ void mostrarReservas(Reserva reservas[50], unsigned char cantRes, Material *mate
 	}
 	cout << endl;
 }
+
 /* verifyID
    verifica que el ID de una materia existe
    Input: el ID a revisar, y el arreglo de materiales con su tamaño
@@ -185,7 +186,7 @@ void mostrarReservasPorMaterial(int id, Reserva reservas[50], unsigned char cant
 			     << "Fecha de fin: " <<
 				reservas[i].calculaFechaFinReserva(
 					getMaterialByID(
-						reservas[i].getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo()) << endl;
+						reservas[i].getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo()) << endl << endl;
 					
 		}
 	}
@@ -231,13 +232,14 @@ void mostrarMaterialesPorFecha(Fecha consulta, Reserva reservas[50], unsigned ch
 		{
 			found = true;
 			cout << "Nombre: " << getMaterialByID(reservas[i].getIDMaterial(), materiales, cantMat)->getTitulo() << endl
-			     << "ID de Cliente: " << reservas[i].getIDCliente();
+			     << "ID de Cliente: " << reservas[i].getIDCliente() << endl << endl;
 		}
 	}
 	if (!found)
 	{
 		cout << "No hay reservas en esta fecha" << endl;
 	}
+	cout << endl;
 }
 
 /* crearReserva
@@ -294,7 +296,7 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
    Input: El arreglo de materiales y reserva, con sus tamaños
    Output: Puede modificar los arreglos
 */
-void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50], unsigned char cantRes)
+void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50], unsigned char &cantRes)
 {
 	Fecha consulta;
 	char option;
@@ -341,6 +343,9 @@ void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50],
 		case 'e':
 			crearReserva(materiales, cantMat, reservas, cantRes);
 			break;
+		case 'f':
+			cout << "terminando..." << endl;
+			break;
 		default:
 		cout << "Porfavor, entre una opción válida\n";
 		break;
@@ -364,8 +369,9 @@ void actualizaReservas(Reserva reservas[50], unsigned char cant)
 	}
 	fOut.close();
 }
+
 /* main
-   LLama a las otras funciones
+   Llama a las otras funciones
    Input: NONE
    Output: 0
 */
