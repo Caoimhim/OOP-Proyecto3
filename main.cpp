@@ -203,7 +203,6 @@ void mostrarReservasPorMaterial(int id, Reserva reservas[50], unsigned char cant
 */
 bool validarFecha(Fecha consulta, Reserva reserva, Material *materiales[20], unsigned char cantMat)
 {
-	
 	Fecha revisando = reserva.getFechaReservacion();
 	Fecha fin = reserva.calculaFechaFinReserva(getMaterialByID(reserva.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
 	while (!(revisando == fin))
@@ -291,6 +290,7 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 	Reserva nuevaReserva(idMaterial, idCliente, fecha);
 	reservas[cantRes++] = nuevaReserva;
 }
+
 /* menu
    Ofrece las opciones al usuario en la consola, y realiza las acciones apropiadas
    Input: El arreglo de materiales y reserva, con sus tamaños
@@ -354,6 +354,11 @@ void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50],
 	} while(option !='f');
 }
 
+/* actualizaReservas
+   Escribe arreglo actualizado de reservas a archivo
+   Inputs: el arreglo de reservas y su tamaño
+   Output: NONE
+*/
 void actualizaReservas(Reserva reservas[50], unsigned char cant)
 {
 	ofstream fOut;
