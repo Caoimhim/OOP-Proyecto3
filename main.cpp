@@ -349,6 +349,21 @@ void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50],
 	} while(option !='f');
 }
 
+void actualizaReservas(Reserva reservas[50], unsigned char cant)
+{
+	ofstream fOut;
+	fOut.open("Reserva.txt");
+
+	for (unsigned char i = 0; i < cant; ++i)
+	{
+		fOut << reservas[i].getFechaReservacion().getDia() << ' '
+		     << reservas[i].getFechaReservacion().getMes() << ' '
+		     << reservas[i].getFechaReservacion().getAnno() << ' '
+		     << reservas[i].getIDMaterial() << ' '
+		     << reservas[i].getIDCliente() << endl;
+	}
+	fOut.close();
+}
 /* main
    LLama a las otras funciones
    Input: NONE
@@ -374,7 +389,11 @@ int main()
 		return 0;
 	}
 
+	//processing
 	menu(materiales, cantidadMateriales, reservas, cantidadReservas);
+
+	//output
+	actualizaReservas(reservas, cantidadReservas);
 	
 	return 0;
 }
