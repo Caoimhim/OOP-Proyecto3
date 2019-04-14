@@ -1,0 +1,4 @@
+#+TITLE: OOP-Proyecto 3
+
+Último mini-proyuecto de OOP.
+Simulación de un sistema de reservas para libros, software y otros materiales, con el objetivo de practicar clases en C++.

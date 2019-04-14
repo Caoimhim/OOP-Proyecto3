@@ -40,7 +40,7 @@ int Disco::getDuracion()
 
 void Disco::muestra()
 {
-	std::cout << "Disco"
+	std::cout << "Disco: "
 		  << idMaterial << ' '
 		  << titulo << ' '
 		  << duracion << endl;
