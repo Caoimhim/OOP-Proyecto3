@@ -205,7 +205,7 @@ bool validarFecha(Fecha consulta, Reserva reserva, Material *materiales[20], uns
 {
 	Fecha revisando = reserva.getFechaReservacion();
 	Fecha fin = reserva.calculaFechaFinReserva(getMaterialByID(reserva.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
-	while (!(revisando == fin))
+	while (revisando <= fin)
 	{
 		if (revisando == consulta)
 		{
