@@ -283,7 +283,9 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 						     << "Porfavor, entre otra fecha" << endl
 						     << "DD MM AAAA" << endl;
 						cin >> fecha;
+
 						fechaCopy = fecha;
+						checking.setFechaReservacion(fecha);
 						fin = checking.calculaFechaFinReserva(getMaterialByID(checking.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
 					}
 					else
