@@ -266,22 +266,29 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 	     << "DD MM AAAA" << endl;
 	cin >> fecha; 
 
+	Reserva checking(idMaterial, idCliente, fecha);
+	Fecha fin = checking.calculaFechaFinReserva(getMaterialByID(checking.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
+
 	while (!valido)
 	{
 		for (unsigned char i = 0; i < cantRes; ++i)
 		{
 			if (reservas[i].getIDMaterial() == idMaterial)
 			{
-				if (validarFecha(fecha, reservas[i], materiales, cantMat))
+				for (Fecha fechaCopy = fecha; fechaCopy <= fin; fechaCopy = fechaCopy + 1)
 				{
-					cout << "Este material ya esta reservado en esta fecha"	 << endl
-					     << "Porfavor, entre otra fecha" << endl
-					     << "DD MM AAAA" << endl;
-					cin >> fecha;
-				}
-				else
-				{
-					valido = true;
+					if (validarFecha(fechaCopy, reservas[i], materiales, cantMat))
+					{
+						cout << "Este material ya esta reservado en esta fecha"	 << endl
+						     << "Porfavor, entre otra fecha" << endl
+						     << "DD MM AAAA" << endl;
+						cin >> fecha;
+						fin = checking.calculaFechaFinReserva(getMaterialByID(checking.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
+					}
+					else
+					{
+						valido = true;
+					}
 				}
 			}
 		}
