@@ -285,6 +285,7 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 				}
 			}
 		}
+		valido = true;
 	}
 
 	Reserva nuevaReserva(idMaterial, idCliente, fecha);
@@ -347,8 +348,8 @@ void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50],
 			cout << "terminando..." << endl;
 			break;
 		default:
-		cout << "Porfavor, entre una opción válida\n";
-		break;
+			cout << "Porfavor, entre una opción válida\n";
+			break;
 	}
 		cout << endl;
 	} while(option !='f');
