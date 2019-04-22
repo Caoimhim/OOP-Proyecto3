@@ -192,7 +192,7 @@ void mostrarReservasPorMaterial(int id, Reserva reservas[50], unsigned char cant
 	}
 	if (!found)
 	{
-		cout << "No se encontro ninguna reserva con ese material" << endl;
+		cout << "No se encontró ninguna reserva con ese material" << endl;
 	}
 }
 
@@ -252,13 +252,13 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 	int idMaterial;
 	Fecha fecha;
 	bool valido = false;
-	cout << "Ente su ID de cliente: ";
+	cout << "Entre su ID de cliente: ";
 	cin >> idCliente;
 	cout << "Entre la ID del material que desea reservar: ";
 	cin >> idMaterial;
 	while (!verifyID(idMaterial, materiales, cantMat))
 	{
-		cout << "Este material no existe. Porfavor, entre in ID váldo: ";
+		cout << "Este material no existe. Porfavor, entre un ID váldo: ";
 		cin >> idMaterial;
 	}
 	
@@ -279,13 +279,13 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 				{
 					if (validarFecha(fechaCopy, reservas[i], materiales, cantMat))
 					{
-						cout << "Este material ya esta reservado en esta fecha"	 << endl
+						cout << "Este material ya está reservado en esta fecha"	 << endl
 						     << "Porfavor, entre otra fecha" << endl
 						     << "DD MM AAAA" << endl;
 						cin >> fecha;
 
 						fechaCopy = fecha;
-						checking.setFechaReservacion(fecha);
+						checking.setFechaReservacion(fechaCopy);
 						fin = checking.calculaFechaFinReserva(getMaterialByID(checking.getIDMaterial(), materiales, cantMat)->cantidadDeDiasDePrestamo());
 					}
 					else
@@ -298,8 +298,7 @@ void crearReserva(Material *materiales[20], unsigned char cantMat, Reserva reser
 		valido = true;
 	}
 
-	Reserva nuevaReserva(idMaterial, idCliente, fecha);
-	reservas[cantRes++] = nuevaReserva;
+	reservas[cantRes++] = checking;
 }
 
 /* menu
@@ -314,10 +313,10 @@ void menu(Material *materiales[20], unsigned char cantMat, Reserva reservas[50],
 
 	do 
 	{
-		cout << "(a) Consultar Materiales\n"
-		     << "(b) Consultar lista de Reservaciones\n"
+		cout << "(a) Consultar materiales\n"
+		     << "(b) Consultar lista de reservaciones\n"
 		     << "(c) Consultar reservaciones de un material\n"
-		     << "(d) Consutlar la reservacion de una fecha\n"
+		     << "(d) Consultar la reservacion de una fecha\n"
 		     << "(e) Hacer una reservación\n"
 		     << "(f) Terminar" << endl;
 		cin >> option;
@@ -407,7 +406,7 @@ int main()
 
 	if(!cargaReservas(reservas, cantidadReservas))
 	{
-		cout << "No se encontro el archvo de reservas" << endl;
+		cout << "No se encontro el archivo de reservas" << endl;
 		return 0;
 	}
 
