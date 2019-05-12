@@ -1,3 +1,9 @@
+/* OOP - Proyecto 3
+   Kevin Chinchilla
+   A00825945
+   Simula una interacción con un sistema de reservas para diferentes tipos de materiales
+   Apr 23, 2019
+*/
 #include <iostream>
 #include <fstream>
 using namespace std;
